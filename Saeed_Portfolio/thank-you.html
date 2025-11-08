@@ -1,29 +1,91 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Thanks</title>
-    <style>
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        height: 100vh;
-        background: #0B0F19;
-        color: white;
-        font-family: sans-serif;
+<head>
+  <meta charset="utf-8">
+  <title>Thanks</title>
+
+  <style>
+    :root {
+      --primary: #3a7dff;
+      --darkText: #1a2b45;
+      --mutedText: #8497a2;
+      --background: #0B0F19;
+      --sectionLight: #0F1623;
+      --primarySoft: #39a7ff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: var(--sectionLight);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: var(--mutedText);
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards;
+      animation-delay: 0.2s;
+    }
+
+    a {
+      margin-top: 25px;
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      color: #fff;
+      border: 2px solid var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
+      animation-delay: 0.4s;
+    }
+
+    a:hover {
+      background: var(--primary);
+      box-shadow: 0 4px 12px rgba(58, 125, 255, 0.4);
+    }
+
+    @keyframes fadeUp {
+      0% {
+        transform: translateY(20px);
+        opacity: 0;
       }
-      a {
-        margin-top: 20px;
-        color: #3a7dff;
-        text-decoration: underline;
+      100% {
+        transform: translateY(0px);
+        opacity: 1;
       }
-    </style>
-  </head>
-  <body>
-    <h1>Message Sent Successfully ✅</h1>
-    <p>Thanks for reaching out. I'll reply as soon as possible!</p>
-    <a href="/">Back to Portfolio</a>
-  </body>
+    }
+  </style>
+</head>
+
+<body>
+  <h1>✅ Message Sent!</h1>
+  <p>Thanks for reaching out. I’ll get back to you as soon as possible.</p>
+  <a href="/">Back to Portfolio</a>
+</body>
 </html>

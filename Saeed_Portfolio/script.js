@@ -1,9 +1,40 @@
 const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
+const themeToggle = document.getElementById("themeToggle");
 
 menuToggle.addEventListener("click", () => {
   navMenu.classList.toggle("show");
   menuToggle.classList.toggle("active");
+});
+
+const applyTheme = (theme) => {
+  const isDark = theme === "dark";
+  document.body.classList.toggle("dark-mode", isDark);
+  if (themeToggle) {
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+    themeToggle.innerHTML = isDark
+      ? '<i class="fas fa-sun"></i>'
+      : '<i class="fas fa-moon"></i>';
+  }
+};
+
+const storedTheme = localStorage.getItem("theme");
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+applyTheme(storedTheme ? storedTheme : prefersDark.matches ? "dark" : "light");
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const nextTheme = document.body.classList.contains("dark-mode") ? "light" : "dark";
+    localStorage.setItem("theme", nextTheme);
+    applyTheme(nextTheme);
+  });
+}
+
+prefersDark.addEventListener("change", (event) => {
+  if (!localStorage.getItem("theme")) {
+    applyTheme(event.matches ? "dark" : "light");
+  }
 });
 
 var typed = new Typed(".typing", {
